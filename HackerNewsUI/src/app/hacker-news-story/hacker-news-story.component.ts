@@ -31,6 +31,7 @@ export class HackerNewsStoryComponent implements OnInit {
     this.httpServices.getAll<HackerNewsStory[]>(environment.getNewsStories + searchInput).subscribe((result: any) => {
       this.hackerNewsStories = result;
       this.isHackerNews=true;
+      this.current=1;
       this.total = Math.ceil(this.hackerNewsStories.length / this.perPage);
       this.hackerNewsStoriesItems = this.paginate(this.current, this.perPage);
     })
