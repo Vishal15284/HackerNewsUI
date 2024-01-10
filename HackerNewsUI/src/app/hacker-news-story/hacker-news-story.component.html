@@ -1,0 +1,20 @@
+<div class="">
+    <h2>Hacker News Stories</h2>
+    <p *ngIf="!isHackerNews"><em>Loading...</em></p>
+    <div *ngIf="isHackerNews">
+      <form>
+        <input type="text" placeholder="Search" (keyup)="searchStories($event.target)" class="form-control" />
+      </form>
+      <ul>
+        <ng-container *ngFor="let hackerNewsStory of hackerNewsStoriesItems">
+          <li class="" (click)="onClick(hackerNewsStory.url)"><span>{{hackerNewsStory.title}}</span></li>
+        </ng-container>
+      </ul>
+      <app-pagination [current]="current"
+                      [total]="total"
+                      (goTo)="onGoTo($event)"
+                      (next)="onNext($event)"
+                      (previous)="onPrevious($event)"></app-pagination>
+    </div>
+  </div>
+  
